@@ -64,17 +64,18 @@ namespace trpo_lab_2
             int maxSum = linerAlgo(a, ref start, ref minLen);
             stopWatch.Stop();            
             TimeSpan ts = stopWatch.Elapsed;
-            string elapsedTime1 = String.Format("{0:f7}", ts.TotalSeconds);
+            string elapsedTime = String.Format("{0:f7}", ts.TotalSeconds);
             stopWatch.Reset();
             stopWatch.Start();
-            int cubMax = cubixAlgo(a, ref start2, ref minLen2);
+            int automat = linerAlgoAutomat(a, ref start2, ref minLen2);
             stopWatch.Stop();
             ts = stopWatch.Elapsed;
             string elapsedTime2 = String.Format("{0:f7}",ts.TotalSeconds);
             string answer = "{0} алгоритм: MAXSUMM = {1}, MINLEN = {2}, время работы = {3}";
             txbxRes.Text += "Длина последовательности = " + a.Length+Environment.NewLine;
-            txbxRes.Text+=string.Format(answer, "Кубический", cubMax, minLen2, elapsedTime2)+Environment.NewLine;
-            txbxRes.Text += string.Format(answer, "Линейный", maxSum, minLen, elapsedTime1);
+            txbxRes.Text += string.Format(answer, "С автоматом", automat, minLen2, elapsedTime2) + Environment.NewLine;
+            txbxRes.Text += string.Format(answer, "Линейный", maxSum, minLen, elapsedTime);
+           
             //выделение цветом
             for (int i = 0; i < a.Length; i++)
             {   
@@ -84,34 +85,46 @@ namespace trpo_lab_2
             }
           
         }
-        private int cubixAlgo(int[] a, ref int start, ref int minlen)
+        enum State 
         {
+            Add,Skip
+        }
+
+        State checkNum(int sum)//функция перехода к новому состоянию
+        {
+            if (sum <= 0)
+                return State.Skip;
+            return State.Add;
+        }
+
+        private int linerAlgoAutomat(int[] a, ref int start, ref int minlen) 
+        {
+            int i = 0;
             int sum = 0, maxsum = 0, len = 0;
-            for (int i = 0; i < a.Length; i++)
+            while (i<a.Length)
             {
-                for (int j = i; j < a.Length; j++)
+                if (checkNum(sum += a[i]) == State.Skip)//пропуск
                 {
-                    len = 0;
                     sum = 0;
-                    for (int k = i; k <= j; k++)
+                    len = 0;
+                }
+                else
+                {
+                    len++;//накапливаем длинну
+                    if (sum > maxsum)//если надо изменить,
                     {
-                        sum += a[k];
-                        len++;
-                    }
-                    if (maxsum < sum)
-                    {
-                        maxsum = sum;
-                        start = i;
                         minlen = len;
+                        start = i - minlen + 1;//определяем откуда стартовали
+                        maxsum = sum;
                     }
                     else
-                        if (sum == maxsum && len < minlen)
+                        if (sum == maxsum && len < minlen)//если сумма такая же, то смотрим может меньше длина
                         {
                             minlen = len;
-                            start = i;
+                            start = i - minlen + 1;
                         }
-
                 }
+                i++;
             }
             return maxsum;
         }
@@ -147,5 +160,37 @@ namespace trpo_lab_2
             }
             return maxsum;
         }
+        /*  private int cubixAlgo(int[] a, ref int start, ref int minlen)
+       {
+           int sum = 0, maxsum = 0, len = 0;
+           for (int i = 0; i < a.Length; i++)
+           {
+               for (int j = i; j < a.Length; j++)
+               {
+                   len = 0;
+                   sum = 0;
+                   for (int k = i; k <= j; k++)
+                   {
+                       sum += a[k];
+                       len++;
+                   }
+                   if (maxsum < sum)
+                   {
+                       maxsum = sum;
+                       start = i;
+                       minlen = len;
+                   }
+                   else
+                       if (sum == maxsum && len < minlen)
+                       {
+                           minlen = len;
+                           start = i;
+                       }
+
+               }
+           }
+           return maxsum;
+       }*/
+     
     }
 }

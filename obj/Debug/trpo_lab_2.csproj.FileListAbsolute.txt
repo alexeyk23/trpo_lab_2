@@ -5,3 +5,11 @@ c:\users\администратор\documents\visual studio 2012\Projects\trpo_l
 c:\users\администратор\documents\visual studio 2012\Projects\trpo_lab_2\trpo_lab_2\obj\Debug\trpo_lab_2.csproj.GenerateResource.Cache
 c:\users\администратор\documents\visual studio 2012\Projects\trpo_lab_2\trpo_lab_2\obj\Debug\trpo_lab_2.exe
 c:\users\администратор\documents\visual studio 2012\Projects\trpo_lab_2\trpo_lab_2\obj\Debug\trpo_lab_2.pdb
+C:\Users\trebushet\Documents\Visual Studio 2012\Projects\trpo_lab_2\obj\Debug\trpo_lab_2.exe
+C:\Users\trebushet\Documents\Visual Studio 2012\Projects\trpo_lab_2\obj\Debug\trpo_lab_2.pdb
+C:\Users\trebushet\Documents\Visual Studio 2012\Projects\trpo_lab_2\bin\Debug\trpo_lab_2.exe
+C:\Users\trebushet\Documents\Visual Studio 2012\Projects\trpo_lab_2\bin\Debug\trpo_lab_2.pdb
+C:\Users\trebushet\Documents\Visual Studio 2012\Projects\trpo_lab_2\obj\Debug\trpo_lab_2.csprojResolveAssemblyReference.cache
+C:\Users\trebushet\Documents\Visual Studio 2012\Projects\trpo_lab_2\obj\Debug\trpo_lab_2.Form1.resources
+C:\Users\trebushet\Documents\Visual Studio 2012\Projects\trpo_lab_2\obj\Debug\trpo_lab_2.Properties.Resources.resources
+C:\Users\trebushet\Documents\Visual Studio 2012\Projects\trpo_lab_2\obj\Debug\trpo_lab_2.csproj.GenerateResource.Cache
